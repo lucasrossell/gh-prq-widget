@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Category": "Utilities",
+        "Description": "PRs that need your action or review, from gh prq",
+        "Icon": "vcs-merge-request",
+        "Id": "io.github.ghprq.widget",
+        "License": "MIT",
+        "Name": "PR Queue",
+        "Version": "0.1.0"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}
