@@ -4,20 +4,26 @@ A read-only KDE Plasma 6 widget for [gh-prq](https://github.com/daviddecorso/gh-
 
 On a panel it's an icon with a count badge. On the desktop, or when opened, it lists the PRs grouped by bucket, with a CI dot, the reason it's your turn, and how long it has been your turn.
 
+![PR Queue widget showing sample PRs](docs/screenshot.png)
+
 ## How it works
 
-Every few minutes it runs `gh prq --json --envelope` and renders the output. All the classification logic stays in gh-prq, and gh-prq's local cache is shared with the CLI and TUI. With a gh-prq that predates `--envelope`, the widget notices the rejected flag and falls back to plain `--json`.
+Every few minutes it runs `gh prq --json --envelope` and renders the output. All the classification logic stays in gh-prq, and gh-prq's local cache is shared with the CLI and TUI. `--envelope` adds the fetch time and stale-cache status to the output ([daviddecorso/gh-prq PR pending](https://github.com/daviddecorso/gh-prq/pulls)). With a gh-prq that doesn't have it yet, the widget notices the rejected flag and falls back to plain `--json`.
 
 ## Install
 
+Needs Plasma 6 and [gh-prq](https://github.com/daviddecorso/gh-prq).
+
 ```sh
+git clone https://github.com/lucasrossell/gh-prq-widget
+cd gh-prq-widget
 kpackagetool6 -t Plasma/Applet -i package    # first time
 kpackagetool6 -t Plasma/Applet -u package    # after changes
 ```
 
 Then add **PR Queue** from *Add Widgets…* to a panel or the desktop.
 
-To try it without adding it anywhere: `plasmawindowed io.github.ghprq.widget`.
+To try it without adding it anywhere: `plasmawindowed io.github.ghprq.widget`. To see it with made-up data instead of your queue, set the command to `cat /path/to/gh-prq-widget/docs/sample.json`.
 
 ## Settings
 
@@ -33,3 +39,7 @@ Right-click → *Refresh Now* forces a refresh. Data younger than gh-prq's `ui.c
 ```sh
 kpackagetool6 -t Plasma/Applet -r io.github.ghprq.widget
 ```
+
+## License
+
+MIT

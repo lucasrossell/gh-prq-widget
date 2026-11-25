@@ -1,0 +1,162 @@
+{
+  "viewer": "me",
+  "fetchedAt": "2026-11-25T15:44:13Z",
+  "staleReason": null,
+  "warnings": [],
+  "items": [
+    {
+      "id": "PR_412",
+      "repo": "acme/api",
+      "number": 412,
+      "title": "Retry webhook deliveries with exponential backoff",
+      "url": "https://github.com/acme/api/pull/412",
+      "author": "dana",
+      "bucket": "NEEDS_REREVIEW",
+      "reason": "2 new commits since your review",
+      "allReasons": [
+        "2 new commits since your review"
+      ],
+      "ciState": "SUCCESS",
+      "failedChecks": [],
+      "additions": 42,
+      "deletions": 7,
+      "headOid": "abc123",
+      "lastReviewedCommitOid": null,
+      "commits": [],
+      "commitCount": 3,
+      "viewerThreads": [],
+      "badges": [],
+      "updatedAt": "2026-11-25T15:21:13Z",
+      "actionSince": "2026-11-25T15:21:13Z"
+    },
+    {
+      "id": "PR_388",
+      "repo": "acme/web",
+      "number": 388,
+      "title": "Move settings page to the new form components",
+      "url": "https://github.com/acme/web/pull/388",
+      "author": "sam",
+      "bucket": "NEEDS_INITIAL_REVIEW",
+      "reason": "review requested",
+      "allReasons": [
+        "review requested"
+      ],
+      "ciState": "PENDING",
+      "failedChecks": [],
+      "additions": 42,
+      "deletions": 7,
+      "headOid": "abc123",
+      "lastReviewedCommitOid": null,
+      "commits": [],
+      "commitCount": 3,
+      "viewerThreads": [],
+      "badges": [],
+      "updatedAt": "2026-11-25T14:11:13Z",
+      "actionSince": "2026-11-25T14:11:13Z"
+    },
+    {
+      "id": "PR_57",
+      "repo": "acme/infra",
+      "number": 57,
+      "title": "Bump Postgres to 17 in staging",
+      "url": "https://github.com/acme/infra/pull/57",
+      "author": "lee",
+      "bucket": "NEEDS_INITIAL_REVIEW",
+      "reason": "team review requested",
+      "allReasons": [
+        "team review requested"
+      ],
+      "ciState": "SUCCESS",
+      "failedChecks": [],
+      "additions": 42,
+      "deletions": 7,
+      "headOid": "abc123",
+      "lastReviewedCommitOid": null,
+      "commits": [],
+      "commitCount": 3,
+      "viewerThreads": [],
+      "badges": [
+        "team"
+      ],
+      "updatedAt": "2026-11-25T11:46:13Z",
+      "actionSince": "2026-11-25T11:46:13Z"
+    },
+    {
+      "id": "PR_96",
+      "repo": "acme/cli",
+      "number": 96,
+      "title": "Add --json output to `acme deploy`",
+      "url": "https://github.com/acme/cli/pull/96",
+      "author": "me",
+      "bucket": "MY_PR_ACTION_NEEDED",
+      "reason": "CI failing: test",
+      "allReasons": [
+        "CI failing: test"
+      ],
+      "ciState": "FAILURE",
+      "failedChecks": [
+        "test"
+      ],
+      "additions": 42,
+      "deletions": 7,
+      "headOid": "abc123",
+      "lastReviewedCommitOid": null,
+      "commits": [],
+      "commitCount": 3,
+      "viewerThreads": [],
+      "badges": [],
+      "updatedAt": "2026-11-25T15:06:13Z",
+      "actionSince": "2026-11-25T15:06:13Z"
+    },
+    {
+      "id": "PR_405",
+      "repo": "acme/api",
+      "number": 405,
+      "title": "Paginate the audit log endpoint",
+      "url": "https://github.com/acme/api/pull/405",
+      "author": "me",
+      "bucket": "MY_PR_READY",
+      "reason": "approved, CI green",
+      "allReasons": [
+        "approved, CI green"
+      ],
+      "ciState": "SUCCESS",
+      "failedChecks": [],
+      "additions": 42,
+      "deletions": 7,
+      "headOid": "abc123",
+      "lastReviewedCommitOid": null,
+      "commits": [],
+      "commitCount": 3,
+      "viewerThreads": [],
+      "badges": [],
+      "updatedAt": "2026-11-25T12:46:13Z",
+      "actionSince": "2026-11-25T12:46:13Z"
+    },
+    {
+      "id": "PR_371",
+      "repo": "acme/web",
+      "number": 371,
+      "title": "Fix flaky date picker test",
+      "url": "https://github.com/acme/web/pull/371",
+      "author": "me",
+      "bucket": "MY_PR_WAITING",
+      "reason": "awaiting review",
+      "allReasons": [
+        "awaiting review"
+      ],
+      "ciState": "SUCCESS",
+      "failedChecks": [],
+      "additions": 42,
+      "deletions": 7,
+      "headOid": "abc123",
+      "lastReviewedCommitOid": null,
+      "commits": [],
+      "commitCount": 3,
+      "viewerThreads": [],
+      "badges": [],
+      "updatedAt": "2026-11-24T18:06:13Z",
+      "actionSince": "2026-11-24T18:06:13Z"
+    }
+  ]
+}
