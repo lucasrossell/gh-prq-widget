@@ -27,7 +27,7 @@ To try it without adding it anywhere: `plasmawindowed io.github.ghprq.widget`. T
 
 ## Settings
 
-- **Command**: runs through `sh`. If `gh` lives in a distrobox or toolbox, prefix it, e.g. `distrobox enter fedora -- gh prq --json --envelope`. Other gh-prq flags such as `--org acme` or `--exclude 'legacy-*'` work here too.
+- **Command**: runs like a line typed in a terminal, so pipes, quotes, `~`, and other gh-prq flags (`--org acme`, `--exclude 'legacy-*'`) work. It doesn't load your shell config, so your aliases aren't available, and `PATH` is your Plasma session's, not your terminal's. If `gh` lives in a distrobox or toolbox, prefix it: `distrobox enter fedora -- gh prq --json --envelope`.
 - **Refresh every**: default 5 minutes.
 - **Show PRs waiting on someone else**: off by default.
 - **Open a PR in the browser when clicked**: on by default; turn it off for a purely read-only view.

@@ -24,7 +24,7 @@ KCM.SimpleKCM {
             wrapMode: Text.Wrap
             font: Kirigami.Theme.smallFont
             opacity: 0.7
-            text: i18n("Runs through sh. If gh lives in a distrobox, prefix it, e.g. \"distrobox enter fedora -- gh prq --json --envelope\". Older gh-prq without --envelope is detected and handled.")
+            text: i18n("Runs like a line typed in a terminal, but without your shell aliases. If gh lives in a distrobox, prefix it, e.g. \"distrobox enter fedora -- gh prq --json --envelope\". Older gh-prq without --envelope is detected and handled.")
         }
 
         QQC2.SpinBox {
