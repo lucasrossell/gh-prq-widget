@@ -8,7 +8,7 @@ On a panel it's an icon with a count badge. On the desktop, or when opened, it l
 
 ## How it works
 
-Every few minutes it runs `gh prq --json --envelope` and renders the output. All the classification logic stays in gh-prq, and gh-prq's local cache is shared with the CLI and TUI. `--envelope` adds the fetch time and stale-cache status to the output ([daviddecorso/gh-prq PR pending](https://github.com/daviddecorso/gh-prq/pulls)). With a gh-prq that doesn't have it yet, the widget notices the rejected flag and falls back to plain `--json`.
+Every few minutes it runs `gh prq --json --envelope` and renders the output. All the classification logic stays in gh-prq, and gh-prq's local cache is shared with the CLI and TUI. `--envelope` adds the fetch time and stale-cache status to the output ([proposed in daviddecorso/gh-prq#4](https://github.com/daviddecorso/gh-prq/pull/4)). With a gh-prq that doesn't have it yet, the widget notices the rejected flag and falls back to plain `--json`.
 
 ## Install
 
