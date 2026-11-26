@@ -1,0 +1,78 @@
+name: macOS app
+
+on:
+  push:
+    branches: [main]
+    paths: ["macos/**", "docs/sample.json", ".github/workflows/macos.yml"]
+    tags: ["macos-v*"]
+  pull_request:
+    paths: ["macos/**", "docs/sample.json", ".github/workflows/macos.yml"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: macos
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Test
+        run: swift test
+
+      - name: Import Developer ID certificate
+        if: startsWith(github.ref, 'refs/tags/macos-v')
+        env:
+          CERT_P12_BASE64: ${{ secrets.MACOS_CERT_P12_BASE64 }}
+          CERT_PASSWORD: ${{ secrets.MACOS_CERT_PASSWORD }}
+        run: |
+          KEYCHAIN="$RUNNER_TEMP/signing.keychain-db"
+          KEYCHAIN_PASSWORD="$(uuidgen)"
+          echo "$CERT_P12_BASE64" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security import "$RUNNER_TEMP/cert.p12" -P "$CERT_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN"
+          security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN" >/dev/null
+          security list-keychains -d user -s "$KEYCHAIN" $(security list-keychains -d user | tr -d '"')
+          rm "$RUNNER_TEMP/cert.p12"
+
+      - name: Build
+        env:
+          SIGN_IDENTITY: ${{ startsWith(github.ref, 'refs/tags/macos-v') && 'Developer ID Application' || '' }}
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/macos-v* ]]; then
+            export VERSION="${GITHUB_REF_NAME#macos-v}"
+          else
+            export VERSION="0.0.0-${GITHUB_SHA::7}"
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          scripts/build-app.sh
+
+      - name: Notarize
+        if: startsWith(github.ref, 'refs/tags/macos-v')
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        run: scripts/notarize.sh
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: PR-Queue-${{ env.VERSION }}
+          path: macos/build/PR-Queue-*.zip
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/macos-v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" build/PR-Queue-*.zip \
+            --title "PR Queue for macOS $VERSION" \
+            --notes "Download PR-Queue-$VERSION.zip, unzip it, and move PR Queue.app to Applications. Needs macOS 14 or later and [gh-prq](https://github.com/daviddecorso/gh-prq)."
