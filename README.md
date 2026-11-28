@@ -2,6 +2,8 @@
 
 A read-only KDE Plasma 6 widget for [gh-prq](https://github.com/daviddecorso/gh-prq). It shows the PRs where it's your turn: needs review, needs re-review, action needed on your PR, ready to merge.
 
+On a Mac? There's a menu bar app that does the same thing: see [macos/](macos/README.md).
+
 On a panel it's an icon with a count badge. On the desktop, or when opened, it lists the PRs grouped by bucket, with a CI dot, the reason it's your turn, and how long it has been your turn.
 
 ![PR Queue widget showing sample PRs](docs/screenshot.png)
